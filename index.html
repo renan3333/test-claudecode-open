@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pomar Um</title>
+<link rel="icon" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/navbar.css">
+<link rel="stylesheet" href="styles/bento.css">
+</head>
+<body>
+<header class="navbar" id="navbar">
+  <a class="brand" href="#"><img src="assets/images/logo.svg" alt="" width="22" height="22">Pomar</a>
+  <nav><a href="#configurador">Comprar</a><a href="#recursos">Recursos</a></nav>
+  <button class="cart-btn" id="cart-toggle" aria-label="Abrir carrinho">
+    <span class="icon icon-bag"></span><span class="cart-count" id="cart-count" hidden>0</span>
+  </button>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="hero-stage">
+      <canvas id="product-canvas" role="img" aria-label="Pomar Um girando 360 graus"></canvas>
+      <div class="captions">
+        <div class="caption" data-from="0" data-to="0.27"><h1>Pomar Um.</h1><p>Feito para ser girado na mão.</p></div>
+        <div class="caption" data-from="0.27" data-to="0.55"><h2>Alumínio reciclado.</h2><p>Usinado de um único bloco.</p></div>
+        <div class="caption" data-from="0.55" data-to="0.85"><h2>Câmera que enxerga no escuro.</h2><p>Três lentes, uma foto nítida.</p></div>
+        <div class="caption" data-from="0.85" data-to="1.01"><h2>Escolha o seu.</h2><p><a class="btn" href="#configurador">Comprar agora</a></p></div>
+      </div>
+      <div class="angle" aria-hidden="true"><span id="angle">0</span>°</div>
+    </div>
+  </section>
+
+  <section class="config" id="configurador">
+    <div class="config-preview" id="preview" aria-hidden="true"></div>
+    <div class="config-panel">
+      <h2>Monte o seu Pomar Um.</h2>
+      <fieldset><legend>Modelo</legend><div class="opts" id="models" role="radiogroup"></div></fieldset>
+      <fieldset><legend>Cor: <span id="color-name"></span></legend><div class="swatches" id="colors" role="radiogroup"></div></fieldset>
+      <p class="price" id="price"></p>
+      <button class="btn" id="add-to-cart">Adicionar ao carrinho</button>
+    </div>
+  </section>
+
+  <section class="bento-wrap" id="recursos">
+    <h2>Por dentro do Pomar Um.</h2>
+    <div class="bento">
+      <article class="card c-chip" data-mode="perf">
+        <h3>Chip P1</h3><p>Troque o modo e veja o consumo mudar.</p>
+        <div class="bars"><i class="bar-a"></i><i class="bar-b"></i></div>
+        <button class="pill" id="perf-toggle" aria-pressed="true">Modo desempenho</button>
+      </article>
+      <article class="card c-bat">
+        <h3>Bateria</h3>
+        <p><strong id="hours">24</strong> h de vídeo</p>
+        <label>Brilho da tela <input type="range" id="brightness" min="0" max="100" value="50"></label>
+      </article>
+      <article class="card c-cam">
+        <h3>Câmera</h3>
+        <div class="finder" id="finder"><span id="zoom-label">1x</span></div>
+        <div class="zooms"><button class="pill on" data-z="1">1x</button><button class="pill" data-z="2">2x</button><button class="pill" data-z="5">5x</button></div>
+      </article>
+      <article class="card c-scr"><h3>Tela</h3><p>120 Hz adaptável e até 2.000 nits ao sol.</p></article>
+      <article class="card c-eco"><h3>Menos peso no planeta</h3><p>100% alumínio reciclado no corpo.</p></article>
+      <article class="card c-priv"><h3>Privacidade</h3><p>Reconhecimento facial e biometria processados só no aparelho.</p></article>
+    </div>
+  </section>
+</main>
+<footer class="footer">Pomar é uma marca fictícia para fins de estudo.</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho" inert>
+  <div class="drawer-head"><h2>Carrinho</h2><button id="cart-close" aria-label="Fechar carrinho">✕</button></div>
+  <ul id="cart-items"></ul>
+  <div class="drawer-foot"><p>Total <strong id="cart-total"></strong></p><button class="btn" id="checkout">Finalizar compra</button></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

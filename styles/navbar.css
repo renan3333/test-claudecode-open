@@ -1,0 +1,28 @@
+.navbar{position:fixed;inset:0 0 auto;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.9rem clamp(16px,4vw,48px);background:rgba(18,20,19,.6);backdrop-filter:blur(16px);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.navbar.hidden{transform:translateY(-100%)}
+.brand{display:flex;align-items:center;gap:.5rem;font-weight:900;font-size:1.15rem;text-decoration:none}
+.navbar nav{display:flex;gap:1.6rem;font-size:.95rem}
+.navbar nav a{text-decoration:none;color:var(--mute);transition:color .2s}.navbar nav a:hover{color:var(--paper)}
+.cart-btn{position:relative;padding:.4rem}
+.cart-count{position:absolute;top:-4px;right:-6px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--accent);color:var(--ink);font-size:.72rem;font-weight:700;display:grid;place-items:center}
+.cart-count[hidden]{display:none}
+.cart-count.bump{animation:bump .4s}
+@keyframes bump{40%{transform:scale(1.5)}}
+
+.scrim{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(400px,100%);background:var(--ink-2);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.drawer.open{transform:none}
+.drawer-head,.drawer-foot{padding:1.2rem 1.4rem;display:flex;justify-content:space-between;align-items:center}
+.drawer-foot{flex-direction:column;align-items:stretch;gap:1rem;border-top:1px solid #2c302e}
+.drawer-foot p{display:flex;justify-content:space-between}
+.drawer-foot .btn{text-align:center}
+#cart-items{list-style:none;padding:0 1.4rem;flex:1;overflow:auto;display:grid;align-content:start;gap:1rem}
+#cart-items li{display:grid;grid-template-columns:44px 1fr auto;gap:.8rem;align-items:center}
+.dot{width:44px;height:44px;border-radius:12px;background:var(--c)}
+#cart-items small{color:var(--mute);display:block}
+.qty{display:flex;align-items:center;gap:.5rem}.qty button{width:26px;height:26px;border-radius:50%;background:#2c302e}
+#cart-items .empty{display:block;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:24px;z-index:50;transform:translate(-50%,40px);opacity:0;padding:.8rem 1.2rem;border-radius:999px;background:var(--paper);color:var(--ink);transition:.35s;pointer-events:none}
+.toast.show{transform:translate(-50%,0);opacity:1}
+@media(max-width:600px){.navbar nav{display:none}}
