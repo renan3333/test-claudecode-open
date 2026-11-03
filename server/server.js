@@ -1,4 +1,5 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
+dotenv.config({ override: true }); // o .env vence variáveis já definidas no ambiente (ex.: Codespaces secrets)
 import express from 'express';
 import Stripe from 'stripe';
 import path from 'node:path';
@@ -7,7 +8,10 @@ import { findItem } from './catalog.js';
 
 const { STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, PORT = 3000 } = process.env;
 const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`;
-if (!STRIPE_SECRET_KEY) { console.error('Defina STRIPE_SECRET_KEY no arquivo .env'); process.exit(1); }
+if (!/^(sk|rk)_(test|live)_/.test(STRIPE_SECRET_KEY || '')) {
+  console.error(`STRIPE_SECRET_KEY inválida (começa com "${(STRIPE_SECRET_KEY || '').slice(0, 8)}"). Use a chave SECRETA, que começa com sk_test_ ou sk_live_.`);
+  process.exit(1);
+}
 
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 const app = express();
